@@ -1,13 +1,13 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialContactsState = { contacts: [] };
+const initialContactsState = { contacts: [], filter: '' };
 
 const contactFormSlice = createSlice({
   name: 'contacts',
   initialState: initialContactsState,
   reducers: {
     addContacts(state, action) {
-      state.contacts = [...state.contacts, ...action.payload.contacts];
+      state.contacts.push(action.payload);
     },
   },
 });

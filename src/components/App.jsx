@@ -1,38 +1,15 @@
 import './App.module.css';
 import ContactForm from './ContactForm/ContactForm.jsx';
-import FilterContact from './FilterContact/FilterContact.jsx';
-import ContactList from './ContactList/ContactList.jsx';
-import { useState } from 'react';
+// import FilterContact from './FilterContact/FilterContact.jsx';
+// import ContactList from './ContactList/ContactList.jsx';
+// import { useState } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from '../redux/selectors';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { getContacts } from '../redux/selectors';
 
 const App = () => {
-  const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
-
-  const addContacts = contact => {
-    if (contact.name.trim()) {
-      const storedContacts = useSelector(getContacts);
-      const dispatch = useDispatch();
-      let contactsArray = [];
-
-      if (storedContacts) {
-        contactsArray = JSON.parse(storedContacts).contacts;
-      }
-
-      if (
-        contactsArray.some(
-          element => element.name.toLowerCase() === contact.name.toLowerCase()
-        )
-      ) {
-        return alert(`${contact.name} is already in contacts`);
-      } else {
-        const updatedContacts = [...contactsArray, contact];
-        dispatch(addContacts({ contacts: updatedContacts }));
-      }
-    }
-  };
+  // const [contacts, setContacts] = useState([]);
+  // const [filter, setFilter] = useState('');
 
   // const filterChange = e => {
   //   setFilter(e.target.value);
@@ -73,7 +50,7 @@ const App = () => {
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm addContacts={addContacts} />
+      <ContactForm />
       {/* <h2>Contacts</h2> */}
       {/* <FilterContact filterChange={filterChange} /> */}
       {/* <ContactList */}

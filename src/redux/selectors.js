@@ -1,3 +1,3 @@
-const getContacts = state => state.contacts;
+const getContacts = state => state.data;
 
 export { getContacts };
