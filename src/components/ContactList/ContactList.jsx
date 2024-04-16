@@ -1,11 +1,36 @@
 import DeleteContact from '../DeleteContact/DeleteContact.jsx';
 import css from './ContactList.module.css';
+import { useSelector } from 'react-redux';
+import { getContacts, getFilters } from '../../redux/selectors.js';
 
-const ContactList = props => {
-  const { contacts, filter, deleteContacts } = props;
+const ContactList = () => {
+  // const {deleteContacts } = props;
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilters);
   const filterContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
+
+  // const deleteContacts = contactName => {
+  //   const storedContacts = localStorage.getItem('contactList');
+  //   let contactsArray = [];
+
+  //   if (storedContacts) {
+  //     contactsArray = JSON.parse(storedContacts).contacts;
+  //   }
+
+  //   let deleteContactsArray = contactsArray.filter(
+  //     element => element.name.toLowerCase() !== contactName.toLowerCase()
+  //   );
+
+  //   localStorage.setItem(
+  //     'contactList',
+  //     JSON.stringify({ contacts: deleteContactsArray })
+  //   );
+  //   console.log(3, 'eliminacion de localstorage');
+
+  //   setContacts({ contacts: deleteContactsArray });
+  // };
 
   return (
     <section>
@@ -24,7 +49,7 @@ const ContactList = props => {
             <li key={element.id}>
               <DeleteContact
                 contactName={element.name}
-                deleteContacts={deleteContacts}
+                // deleteContacts={deleteContacts}
               />
             </li>
           ))}
