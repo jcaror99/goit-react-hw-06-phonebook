@@ -1,10 +1,14 @@
 import css from './DeleteContact.module.css';
+import { useDispatch } from 'react-redux';
+import { deleteContacts } from '../../redux/contactSlice';
 
 const DeleteContact = props => {
-  const { contactName, deleteContacts } = props;
+  const dispatch = useDispatch();
+  const { contactName } = props;
 
   const handleClickDeleteButton = e => {
-    deleteContacts(e.target.name);
+    const payload = e.target.name.toLowerCase();
+    dispatch(deleteContacts(payload));
   };
 
   return (

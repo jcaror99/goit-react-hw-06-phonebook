@@ -9,11 +9,19 @@ const contactSlice = createSlice({
     addContacts(state, action) {
       state.contacts.push(action.payload);
     },
+    deleteContacts(state, action) {
+      let index = state.contacts.findIndex(
+        element => element.name.toLowerCase() !== action.payload
+      );
+
+      state.contacts.splice(index, 1);
+    },
     filterContacts(state, action) {
       state.filter = action.payload;
     },
   },
 });
 
-export const { addContacts, filterContacts } = contactSlice.actions;
+export const { addContacts, filterContacts, deleteContacts } =
+  contactSlice.actions;
 export default contactSlice.reducer;
